@@ -1,0 +1,11 @@
+Package: RRegularity
+Type: Package
+Title: R Implementation of Regularity
+Version: 0.1
+Description: TODO
+License: MIT License + file LICENSE
+Depends: R (>= 2.14.0), magrittr
+NeedsCompilation: no
+ByteCompile: yes
+Author: Drew Schmidt
+Maintainer: Drew Schmidt <wrathematics@gmail.com>
