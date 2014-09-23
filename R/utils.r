@@ -1,5 +1,3 @@
-deparsub <- function(...) deparse(substitute(list(...)))
-
 # FIXME
 .__PATTERNS = c(
   digit = '[0-9]',
@@ -12,16 +10,11 @@ deparsub <- function(...) deparse(substitute(list(...)))
   tab = '\\t'
 )
 
-re_digit <- '[0-9]'
-re_lowercase <- '[a-z]'
-re_uppercase <- '[A-Z]'
-re_letter <- '[A-Za-z]'
-re_alphanumeric <- '[A-Za-z0-9]'
-re_whitespace <- '\\s'
-re_space <- ' '
-re_tab <- '\\t'
-
 .__RRegularity_ESCAPED_CHARS <- c("*", ".", "?", "^", "+", "$", "|", "(", ")", "[", "]", "{", "}")
+
+
+
+prune_s <- function(str) sub(x=str, pattern="s$", replacement="")
 
 
 
@@ -50,9 +43,12 @@ escape <- function(pattern)
 
 
 
-translate <- function(pattern)
+translate <- function(pattern, literal=FALSE)
 {
-  ret <- .__PATTERNS[pattern]
+  if (literal)
+    return(pattern)
+  
+  ret <- .__PATTERNS[prune_s(pattern)]
   if (!is.na(ret))
     names(ret) <- NULL
   else
